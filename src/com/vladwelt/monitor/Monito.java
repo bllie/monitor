@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class Monito extends ListActivity {
@@ -40,4 +43,13 @@ public class Monito extends ListActivity {
 	    setListAdapter(ListadoAdapter);
 	}
 	
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Bundle b = new Bundle();
+        b.putString("id",Eventos.get(position).get("id_proc") );
+        b.putString("Nombre",Eventos.get(position).get("Nombre") );
+        Intent intent = new Intent(this,DetalleProceso.class);
+        intent.putExtras(b);
+        startActivity(intent);
+    }
 }
