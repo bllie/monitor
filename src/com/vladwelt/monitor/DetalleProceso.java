@@ -1,5 +1,7 @@
 package com.vladwelt.monitor;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -23,8 +25,14 @@ public class DetalleProceso extends Activity {
 			String datos = b.getString("id");
 			proceso = new DirectoryProccess(direccion+datos);
 			textView.setText(proceso.proccesId());
-			textView.append("\n"+proceso.nameProccess());
-			textView.append("\n"+proceso.useMemory());
+			List<Atributo> atributos = proceso.getAtributos();
+			for (Atributo atributo : atributos) {
+				textView.append("\n");
+				textView.append(atributo.getKey() + " : " + atributo.getValue());
+			}
+			//textView.append("\n"+proceso.nameProccess());
+			//textView.append("\n"+proceso.useMemory());
+			
 		}
 		else{
 			Log.d("Tag", "La actividad no se ha llamado mediante un intent.");
