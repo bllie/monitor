@@ -1,3 +1,4 @@
+package com.vladwelt.monitor;
 public class Atributo {
     private String key;
     private String value;

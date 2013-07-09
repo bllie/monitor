@@ -1,4 +1,4 @@
-
+package com.vladwelt.monitor;
 import java.util.List;
 
 public interface Proccess {
